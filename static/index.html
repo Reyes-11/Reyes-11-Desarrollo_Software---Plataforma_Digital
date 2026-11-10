@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoría de NAP FTTH-GPON · Municipio Plaza</title>
+<link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+<header>
+  <h1>Gestión y auditoría de NAP FTTH-GPON</h1>
+  <p>Municipio Plaza (Guarenas), Estado Miranda</p>
+  <nav>
+    <button data-tab="dash" class="on">Resumen</button>
+    <button data-tab="naps">Cajas NAP</button>
+    <button data-tab="audit">Nueva auditoría</button>
+    <button data-tab="hist">Historial</button>
+  </nav>
+</header>
+<main>
+  <div id="msg" role="status"></div>
+
+  <section id="dash">
+    <div class="stats" id="stats"></div>
+    <p class="note">El estado de cada NAP corresponde a su última auditoría. Parámetros GPON clase B+ (ITU-T G.984): recepción óptima entre -8 y -25 dBm; sensibilidad de la ONT -27 dBm.</p>
+  </section>
+
+  <section id="naps" hidden>
+    <div class="bar"><input id="q" placeholder="Buscar por código o sector"><button id="newNap" class="primary">Registrar NAP</button></div>
+    <form id="napForm" hidden>
+      <input type="hidden" name="id">
+      <label>Código<input name="code" required maxlength="30" placeholder="NAP-GUA-004"></label>
+      <label>Sector<input name="sector" required list="sectors" maxlength="100"></label>
+      <datalist id="sectors"><option>Guarenas Centro</option><option>Ciudad Casarapa</option><option>Mampote</option></datalist>
+      <label>Dirección<input name="address" maxlength="200"></label>
+      <label>Splitter<select name="splitter"><option>1:2</option><option>1:4</option><option selected>1:8</option><option>1:16</option><option>1:32</option><option>1:64</option></select></label>
+      <label>Puertos totales<input name="ports_total" type="number" min="1" max="64" value="8" required></label>
+      <label>Puertos usados<input name="ports_used" type="number" min="0" max="64" value="0" required></label>
+      <label>Potencia OLT (dBm)<input name="olt_tx_dbm" type="number" step="0.1" value="3" required></label>
+      <label>Distancia a la OLT (km)<input name="distance_km" type="number" step="0.01" min="0" value="1" required></label>
+      <label>Estado<select name="state"><option>Activa</option><option>Mantenimiento</option><option>Inactiva</option></select></label>
+      <label>Notas<input name="notes" maxlength="255"></label>
+      <div class="actions"><button class="primary">Guardar NAP</button><button type="button" id="cancelNap">Cancelar</button></div>
+    </form>
+    <div class="scroll"><table id="napTable"></table></div>
+  </section>
+
+  <section id="audit" hidden>
+    <form id="auditForm">
+      <label>NAP<select name="nap_id" id="auditNap" required></select></label>
+      <label>Técnico<input name="technician" required maxlength="80"></label>
+      <label>Potencia medida en ONT (dBm)<input name="rx_dbm" type="number" step="0.01" required placeholder="-21.5"></label>
+      <label>Conectores en el enlace<input name="connectors" type="number" min="0" value="2" required></label>
+      <label>Empalmes en el enlace<input name="splices" type="number" min="0" value="2" required></label>
+      <div class="actions"><button type="button" id="calcBtn">Calcular potencia esperada</button><button class="primary">Guardar auditoría</button></div>
+    </form>
+    <div id="result" class="result" hidden></div>
+  </section>
+
+  <section id="hist" hidden>
+    <div class="bar">
+      <select id="fStatus"><option value="">Todos los estados</option><option>OK</option><option>ALERTA</option><option>CRITICO</option></select>
+      <a class="btn" href="/api/export.csv">Exportar CSV</a>
+    </div>
+    <div class="scroll"><table id="histTable"></table></div>
+  </section>
+</main>
+<script src="/static/js/app.js"></script>
+</body>
+</html>
