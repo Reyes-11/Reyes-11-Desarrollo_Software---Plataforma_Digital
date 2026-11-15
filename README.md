@@ -2,7 +2,16 @@
 
 Aplicación web para que técnicos y supervisores de un ISP en Guarenas registren cajas NAP, auditen la potencia óptica recibida en la ONT y obtengan un diagnóstico automático según ITU-T G.984 (GPON clase B+).
 
-**Stack:** Python 3 + Flask · MySQL 8 (PyMySQL) · HTML5 / CSS3 / JavaScript.
+## Stack Tecnológico
+* **Backend:** Python 3 + Flask
+* **Base de Datos:** MySQL 8 / MariaDB (vía PyMySQL)[cite: 13]
+* **Frontend:** HTML5 / CSS3 / JavaScript (Vanilla)
+
+## Requisitos Previos
+Asegúrate de tener instalado en tu sistema:
+* Python (versión 3.10 o superior)
+* Git
+* Servidor MySQL o MariaDB activo
 
 ## Instalación
 1. Crear la base de datos: `mysql -u root -p < schema.sql`
@@ -19,3 +28,11 @@ Aplicación web para que técnicos y supervisores de un ISP en Guarenas registre
 
 ## API
 `GET/POST /api/naps` · `PUT/DELETE /api/naps/<id>` · `POST /api/calc` · `GET/POST /api/audits` · `GET /api/stats` · `GET /api/export.csv`
+
+
+## Integrantes:
+-Andrés Reyes V-30.520.333
+-Allan González V- 28.660.376
+-Diego Herrera V-32.333.289
+-Fernando Reyes V-30.159.566
+-Mitchael Ruíz V-31.416.127
