@@ -31,8 +31,8 @@ Asegúrate de tener instalado en tu sistema:
 
 
 ## Integrantes:
--Andrés Reyes V-30.520.333
--Allan González V- 28.660.376
--Diego Herrera V-32.333.289
--Fernando Reyes V-30.159.566
--Mitchael Ruíz V-31.416.127
+* -Andrés Reyes V-30.520.333
+* -Allan González V- 28.660.376
+* -Diego Herrera V-32.333.289
+* -Fernando Reyes V-30.159.566
+* -Mitchael Ruíz V-31.416.127
