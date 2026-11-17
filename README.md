@@ -14,12 +14,20 @@ Asegúrate de tener instalado en tu sistema:
 * Servidor MySQL o MariaDB activo
 
 ## Instalación
-1. Crear la base de datos: `mysql -u root -p < schema.sql`
-2. `python -m venv venv` y activar (`venv\Scripts\activate` en Windows, `source venv/bin/activate` en Linux/Mac)
-3. `pip install -r requirements.txt`
-4. Configurar credenciales (ver `.env.example`), por ejemplo en Windows: `set DB_PASSWORD=tu_clave` / Linux: `export DB_PASSWORD=tu_clave`
-5. `python app.py` y abrir http://127.0.0.1:5000
-
+1. Instalar [XAMPP](https://www.apachefriends.org/) y encender **MySQL** (en Apache solo si se usará phpMyAdmin).
+2. Crear la base de datos importando `Proyecto/schema.sql`:
+   - Con phpMyAdmin: abrir http://localhost/phpmyadmin, pestaña **Importar**, elegir `schema.sql` y pulsar **Importar**.
+   - Con terminal (Linux/Mac o MySQL en el PATH): `mysql -u root -p < Proyecto/schema.sql`
+3. Entrar a la carpeta del proyecto: `cd Proyecto`
+4. Crear y activar el entorno virtual:
+   - Windows: `python -m venv venv` y luego `venv\Scripts\activate`
+   - Linux/Mac: `python3 -m venv venv` y luego `source venv/bin/activate`
+5. Instalar dependencias: `pip install -r requirements.txt`
+6. Si MySQL tiene clave (con XAMPP normalmente no), definirla antes de ejecutar:
+   - Windows PowerShell: `$env:DB_PASSWORD="tu_clave"`
+   - Linux/Mac: `export DB_PASSWORD=tu_clave`
+7. Ejecutar: `python app.py` y abrir http://127.0.0.1:5000
+   
 ## Funcionalidades
 - CRUD de NAP (código único, splitter, puertos, potencia OLT, distancia, estado) con validaciones.
 - Cálculo del presupuesto óptico: fibra 0.25 dB/km (1490 nm), splitter (1:8 = 10.5 dB, 1:16 = 13.8 dB…), conectores 0.5 dB, empalmes 0.1 dB.
@@ -31,8 +39,8 @@ Asegúrate de tener instalado en tu sistema:
 
 
 ## Integrantes:
-* -Andrés Reyes V-30.520.333
-* -Allan González V- 28.660.376
-* -Diego Herrera V-32.333.289
-* -Fernando Reyes V-30.159.566
-* -Mitchael Ruíz V-31.416.127
+* -Andrés Reyes 
+* -Allan González 
+* -Diego Herrera 
+* -Fernando Reyes 
+* -Mitchael Ruíz 
